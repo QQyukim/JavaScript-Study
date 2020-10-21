@@ -36,14 +36,22 @@ function checkAnswers(input, reg) {
     const userInfo = input.parentNode;
     const noti = userInfo.querySelector('.noti');
 
-    if (input == confirmPw) {
+    if (input == confirmPw) {   // 비밀번호 확인할 때만 도는 조건문
         if (pw.value == confirmPw.value) {
-            input.classList.remove('alert');
-            input.classList.add('correct');
-            noti.style.display = 'none';
+            if (pw.value == "") {
+                input.classList.add('alert');
+                input.classList.remove('correct');
+                noti.textContent = "비밀번호를 먼저 입력해주세요."
+                noti.style.display = 'block';
+            } else{
+                input.classList.remove('alert');
+                input.classList.add('correct');
+                noti.style.display = 'none';
+            }
         } else {
             input.classList.add('alert');
             input.classList.remove('correct');
+            noti.textContent = "비밀번호를 다시 확인해주세요."
             noti.style.display = 'block';
         }
     } else {
