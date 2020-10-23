@@ -19,10 +19,20 @@
 
 .user_info {
     margin-bottom: 30px;
+    position: relative;
 }
 
 .user_info .title {
     margin-bottom: 7px;
+}
+
+.user_info img {
+    position: absolute;
+    display: block;
+    right: 10px;
+    top: 32px;
+    width: 25px;
+    cursor: pointer;
 }
 
 .m_text {

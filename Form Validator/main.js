@@ -1,21 +1,20 @@
 const container = document.querySelector('.container');
-// const inputField = document.querySelector('.input_field');
 const name = document.querySelector('#name_field');
 const email = document.querySelector('#email_field');
 const pw = document.querySelector('#pw_field');
 const confirmPw = document.querySelector('#confirmPw_field');
 const noti = document.querySelector('.noti');
-const button = document.querySelector('button');
+const button = document.querySelector('.button');
 
 const regName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}$/;
 const regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 const regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 
 function init() {
-    window.addEventListener('resize', resizeFunc);
+    window.addEventListener('resize', resize);
 }
 
-function resizeFunc() {
+function resize() {
     container.style.display = 'block';
 
     let containerLeft = (window.innerWidth - container.clientWidth) / 2;
@@ -23,6 +22,21 @@ function resizeFunc() {
 
     container.style.marginLeft = containerLeft + 'px';
     container.style.marginTop = containerTop + 'px';
+}
+
+function seePwThroughEyeIcon(icon) {
+    const input_field = icon.nextElementSibling;
+
+    if (icon.classList[1] == 'visible') {
+        icon.src = 'img/visibility.png';
+        icon.alt = 'visibility';
+        input_field.type = 'password';
+    } else {
+        icon.src = 'img/invisible.png';
+        icon.alt = 'invisible';
+        input_field.type = 'text';
+    }
+    icon.classList.toggle('visible');
 }
 
 function submitForm() {
