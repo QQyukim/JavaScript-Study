@@ -15,6 +15,7 @@
     font-weight: bold;
     margin-bottom: 25px;
     text-align: center;
+    color: darkslateblue;
 }
 
 .user_info {
@@ -45,18 +46,19 @@
     box-sizing: border-box;
     height: 40px;
     outline: none;
-    border: 1px solid #c7c7c7;
+    border: 2px solid #c7c7c7;
+    border-radius: 5px;
     padding: 10px;
     font-size: 16px;
 
 }
 
 .input_field.alert {
-    border: 1px solid #D34343;
+    border: 2px solid #D34343;
 }
 
 .input_field.correct {
-    border: 1px solid #22B52C;
+    border: 2px solid #22B52C;
 }
 
 .noti {
@@ -73,7 +75,7 @@
     font-size: 17px;
     color: #ffffff;
     background-color: darkslateblue;
-    border-radius: 3px;
+    border-radius: 5px;
     border: none;
     margin-top: 20px;
 }
