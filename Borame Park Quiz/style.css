@@ -1,0 +1,14 @@
+.container {
+    display: none;
+    background-color: plum;
+    width: 750px;
+    /* height: 400px; */
+}
+
+.quiz .question {
+    font-size: 20px;
+}
+
+.quiz .answer {
+    margin: 10px 0px 30px 0px
+}
