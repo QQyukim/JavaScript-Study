@@ -18,10 +18,15 @@ function resize() {
     container.style.display = 'block';
 
     let containerLeft = (window.innerWidth - container.clientWidth) / 2;
-    let containerTop = (window.innerHeight - container.clientWidth) / 2 - 50;
+    let containerTop = (window.innerHeight - container.clientHeight) / 2;
 
     container.style.marginLeft = containerLeft + 'px';
-    container.style.marginTop = containerTop + 'px';
+
+    if (window.innerHeight > 600) {
+        container.style.marginTop = containerTop + 'px';
+    } else {
+        container.style.marginTop = 50;
+    }
 }
 
 function seePwThroughEyeIcon(icon) {
