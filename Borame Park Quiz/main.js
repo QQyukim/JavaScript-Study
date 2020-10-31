@@ -64,44 +64,48 @@ function buildQuiz() {
     const output = []; //퀴즈 문제와 선택지가 저장된 배열
 
     quizData.forEach(  //quizData배열값 불러오기
-        (currentQuestion, questionNum) => { 
+        (currentQuestion, questionNum) => {
             const answers = []; //퀴즈 선택지 배열
 
-            for(item in currentQuestion.answers){  
+            for(item in currentQuestion.answers){   // item = key
                 //퀴즈 선택지 DOM구조 생성
-                answers.push(`<label>  
-                                <input type="radio" name="question${questionNum}" value="${item}">
-                                ${item} : ${currentQuestion.answers[item]}
+                answers.push(`<label>
+                                <input class="eachAnswer" type="radio" name="question${questionNum}" value="${item}">
+                                ${currentQuestion.answers[item]}
                             </label>`);
                 }
                 
                  //output배열에 퀴즈와 선택지 DOM 추가하기
-                output.push(`<div class="question"> ${questionNum + 1}. ${currentQuestion.question}</div>
+                output.push(`<div class="question">${questionNum + 1}. ${currentQuestion.question}</div>
                             <div class="answer">${answers.join('<br>')}</div>`);
-            });
-
+            }
+        );
         quizDisplay.innerHTML = output.join(' '); //join메서드, 퀴즈 사이에 공백 넣기
+        // quizDisplay.innerHTML = output; // ,(comma) 생성됨
 }
+
 function showResult() {
     //'answer'이름의 클래스를 배열로 저장하기
-    const answerDisplays = quizDisplay.querySelectorAll('.answer');  
+    const answerDisplays = quizDisplay.querySelectorAll('.answer');
     let numCorrect = 0; //퀴즈 정답률 기록
     
     //답안 검증하기
-    quizData.forEach( (currentQuestion, questionNum)=>{
-       const answerDisplay = answerDisplays[questionNum]; //answerDisplays배열을 index별로 불러오기
-       const selector = `input[name=question${questionNum}]:checked`; //input태그의 속성값 지정하기
-       const userAnswer = (answerDisplay.querySelector(selector) || {}).value; //input check값 저장
+    quizData.forEach(
+        (currentQuestion, questionNum) => {
+            const answerDisplay = answerDisplays[questionNum]; //answerDisplays배열을 index별로 불러오기
+            const selector = `input[name=question${questionNum}]:checked`; //input태그의 속성값 지정하기
+            const userAnswer = (answerDisplay.querySelector(selector) || {}).value; //input check값 저장
 
-        if(userAnswer === currentQuestion.correct){  //user가 선택한 값과 정답 검증
-                numCorrect++;
-                // answerDisplays[questionNum].style.color = 'lightgreen';
-        }else{
-                // answerDisplays[questionNum].style.color = 'red';
+            if(userAnswer === currentQuestion.correct){  //user가 선택한 값과 정답 검증
+                    numCorrect += 1;
+                    // answerDisplays[questionNum].style.color = 'lightgreen';
+            }else{
+                    // answerDisplays[questionNum].style.color = 'red';
+            }
         }
-    });
+    );
     //resultDisplay DOM에 결과값 삽입하기
-    resultDisplay.innerHTML = `${numCorrect} out of ${quizData.length}`; 
+    resultDisplay.innerHTML = `${numCorrect} out of ${quizData.length}`;
 }
 
 init();

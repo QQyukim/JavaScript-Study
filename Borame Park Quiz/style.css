@@ -5,10 +5,25 @@
     /* height: 400px; */
 }
 
+.container h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px 0px;  /* margin 사용 X */
+}
+
+.quiz {
+    padding: 10px;
+}
+
 .quiz .question {
     font-size: 20px;
 }
 
 .quiz .answer {
     margin: 10px 0px 30px 0px
+}
+
+.eachAnswer {
+    margin: 5px 10px;
 }
