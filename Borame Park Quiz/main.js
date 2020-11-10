@@ -1,7 +1,9 @@
 const container = document.querySelector('.container');
 const quizDisplay = document.querySelector('.quiz');
-const submitBtn = document.querySelector('.submit');
-const resultDisplay = document.querySelector('.result');
+const submitBtn = document.querySelector('#submit');
+const previousBtn = document.querySelector('#previous');
+const nextBtn = document.querySelector('#next');
+// const resultDisplay = document.querySelector('.result');
 const quizData = [
     {
         question : "보라매공원의 '보라매'는 무엇을 상징할까요?",
@@ -34,10 +36,12 @@ const quizData = [
         correct : 'c'
     }
 ]
+let currentSlide = 0;
 
 function init() {
     window.addEventListener('resize', resize);
     buildQuiz();
+	showSlide(currentSlide);
 }
 
 function resize() {
@@ -61,7 +65,7 @@ function resize() {
 }
 
 function buildQuiz() {
-    const output = []; //퀴즈 문제와 선택지가 저장된 배열
+    let output = []; //퀴즈 문제와 선택지가 저장된 배열
 
     quizData.forEach(  //quizData배열값 불러오기
         (currentQuestion, questionNum) => {
@@ -74,21 +78,53 @@ function buildQuiz() {
                                 ${currentQuestion.answers[item]}
                             </label>`);
                 }
-                
+
                  //output배열에 퀴즈와 선택지 DOM 추가하기
-                output.push(`<div class="question">${questionNum + 1}. ${currentQuestion.question}</div>
-                            <div class="answer">${answers.join('<br>')}</div>`);
+                output.push(`<div class="slide">
+                                <div class="question">${questionNum + 1}. ${currentQuestion.question}</div>
+                                <div class="answer">${answers.join('<br>')}</div>
+                            </div>`);
             }
         );
         quizDisplay.innerHTML = output.join(' '); //join메서드, 퀴즈 사이에 공백 넣기
         // quizDisplay.innerHTML = output; // ,(comma) 생성됨
 }
 
+function showSlide(n) {
+    const slides = document.querySelectorAll('.slide');
+
+    slides[currentSlide].classList.remove('active-slide');
+    slides[n].classList.add('active-slide');
+    currentSlide = n;
+
+    if (currentSlide === 0) {
+        previousBtn.style.display = 'none';
+    } else {
+        previousBtn.style.display = 'inline-block';
+    }
+
+    if (currentSlide === slides.length - 1) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-block';
+    } else {
+        nextBtn.style.display = 'inline-block';
+        submitBtn.style.display = 'none';
+    }
+}
+
+function showNextSlide() {
+    showSlide(currentSlide+1);
+}
+
+function showPreviousSlide(){
+    showSlide(currentSlide-1);
+}
+
 function showResult() {
     //'answer'이름의 클래스를 배열로 저장하기
     const answerDisplays = quizDisplay.querySelectorAll('.answer');
     let numCorrect = 0; //퀴즈 정답률 기록
-    
+
     //답안 검증하기
     quizData.forEach(
         (currentQuestion, questionNum) => {
@@ -97,16 +133,19 @@ function showResult() {
             const userAnswer = (answerDisplay.querySelector(selector) || {}).value; //input check값 저장
 
             if(userAnswer === currentQuestion.correct){  //user가 선택한 값과 정답 검증
-                    numCorrect += 1;
-                    // answerDisplays[questionNum].style.color = 'lightgreen';
-            }else{
-                    // answerDisplays[questionNum].style.color = 'red';
+                numCorrect += 1;
             }
         }
     );
+
+    previousBtn.style.display = 'none';
+    submitBtn.style.display = 'none';
+    
     //resultDisplay DOM에 결과값 삽입하기
-    resultDisplay.innerHTML = `${numCorrect} out of ${quizData.length}`;
+    // resultDisplay.innerHTML = `${numCorrect} out of ${quizData.length}`;
 }
 
 init();
+previousBtn.addEventListener('click',showPreviousSlide);
+nextBtn.addEventListener('click',showNextSlide);
 submitBtn.addEventListener('click',showResult);

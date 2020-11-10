@@ -1,22 +1,70 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="author" content="QQyukim">
+    <meta name="descriptino" content="보라매공원 정보 관련 퀴즈">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>보라매공원 퀴즈</title>
 
+    <!-- favicon 넣기 -->
     <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./start.css">
+    <link rel="stylesheet" href="./main.css">
 </head>
-<body onload="resize();">
-    <div class="container">
-        <h1>보라매공원을 탐방해봐요!</h1>
-        <section class="quiz"></section>
-        <section style="text-align: center; padding-bottom: 20px;">
-            <button class="submit">점수보기</button>
+
+<!-- <body onload="resize();"> -->
+<body>
+    <div id="wrap">
+        <section id="start-page" class="container">
+            <div id="title-box">
+                <h1 class="main-title">
+                    보라매공원 퀴즈
+                </h1>
+                <h2 class="sub-title">
+                    보라매공원에 대하여<br>
+                    얼마나 많이 알고 있나요?
+                </h2>
+            </div>
+            <div class="quiz-description">
+                보라매공원 설명 어쩌구
+            </div>
+            <div class="start-btn-wrap">
+                <button class="start-btn">공원 탐방 GO</button>
+            </div>
         </section>
-        <section class="result"></section>
+
+        <!-- <section id="qna" class="container">
+        </section> -->
+
     </div>
-    <script src="main.js"></script>
+
+
+
+
+
+
+    <!-- <div class="container">
+        <div class="quiz-container">
+            <h1>보라매공원을 탐방해봐요!</h1>
+            <section class="quiz"></section>
+        </div>
+        <div class="quiz-ctrl">
+            <button id="previous" class="quiz-btn"> 뒤로 </button>
+            <button id="next" class="quiz-btn"> 앞으로 </button>
+            <button id="submit" class="quiz-btn">점수보기</button>
+        </div>
+        <section class="result"></section>
+    </div> -->
+
+    <!-- <script src="main.js"></script> -->
 </body>
+
 </html>
+
+<!-- https://webdoli.tistory.com/270?category=833233 -->
+<!-- https://dev-dain.tistory.com/22?category=816329 -->
