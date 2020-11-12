@@ -12,9 +12,10 @@
 
     <!-- favicon 넣기 -->
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/start.css">
     <link rel="stylesheet" href="css/quiz.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/result.css">
 </head>
 
 <body onload="resize()">
@@ -31,7 +32,7 @@
                     </h2>
                 </div>
                 <div class="park-img">
-                    이미지 들어갈 구간
+                    <img src="images/boramaepark-bg.png" id="boramaepark-bg" width="100%">
                 </div>
                 <div class="quiz-description">
                     옛날 공군사관학교 자리에 공원이 지어져<br>
@@ -67,12 +68,12 @@
             </section>
 
             <section class="quiz-ctrl">
-                <button id="previous" class="quiz-btn"> 뒤로 </button>
-                <button id="next" class="quiz-btn"> 앞으로 </button>
-                <button id="submit" class="quiz-btn">내 점수는?</button>
+                <!-- <button id="previous-btn" class="quiz-btn">⬅</button> -->
+                <button id="next-btn" class="quiz-btn">➡</button>
+                <button id="submit-btn" class="quiz-btn">내 점수는?</button>
             </section>
 
-            <!-- <section class="result"></section> -->
+            <section class="result-page"></section>
         </section>
 
     </section>
