@@ -3,6 +3,7 @@ const container = document.querySelector('.container');
 const startPage = document.querySelector(".start-page");
 const quizPage = document.querySelector(".quiz-page");
 const quizCtrl = document.querySelector(".quiz-ctrl");
+const resultPage = document.querySelector(".result-page");
 
 const mainTitle = document.querySelector('.main-title');
 const subTitle = document.querySelector('.sub-title');
@@ -12,9 +13,9 @@ const startBtn = document.querySelector('.start-btn');
 
 const question = document.querySelector('.question');
 const answer = document.querySelector('.answer');
-const submitBtn = document.querySelector('#submit');
-const previousBtn = document.querySelector('#previous');
-const nextBtn = document.querySelector('#next');
+const submitBtn = document.querySelector('#submit-btn');
+// const previousBtn = document.querySelector('#previous-btn');
+const nextBtn = document.querySelector('#next-btn');
 
 let currentSlide = 0;
 
@@ -55,9 +56,12 @@ function buildQuiz() {
             for(item in currentQuestion.answers){   // item = key
                 //퀴즈 선택지 DOM구조 생성
                 answers.push(`<label>
-                                <input class="eachAnswer" type="radio" name="question${questionNum}" value="${item}">
-                                ${currentQuestion.answers[item]}
-                            </label>`);
+                                    <input class="inputAnswer" type="radio" onclick="setCheckedBtn(this);" name="question${questionNum}" value="${item}">
+                                    <div class="eachAnswer">            
+                                        ${currentQuestion.answers[item]}
+                                    </div>
+                                </label>`);
+                                
                 }
 
                 //output배열에 퀴즈와 선택지 DOM 추가하기
@@ -67,21 +71,21 @@ function buildQuiz() {
                             </div>`);
             }
         );
-        quizPage.innerHTML += output.join(' '); //join메서드, 퀴즈 사이에 공백 넣기
+        quizPage.innerHTML = output.join(' '); //join메서드, 퀴즈 사이에 공백 넣기
 }
 
 function showSlide(n) {
     const slides = document.querySelectorAll('.slide');
-
+    
     slides[currentSlide].classList.remove('on');
     slides[n].classList.add('on');
     currentSlide = n;
 
-    if (currentSlide === 0) {
-        previousBtn.style.display = 'none';
-    } else {
-        previousBtn.style.display = 'inline-block';
-    }
+    // if (currentSlide === 0) {
+    //     previousBtn.style.display = 'none';
+    // } else {
+    //     previousBtn.style.display = 'inline-block';
+    // }
 
     if (currentSlide === slides.length - 1) {
         nextBtn.style.display = 'none';
@@ -92,40 +96,77 @@ function showSlide(n) {
     }
 }
 
+function setCheckedBtn(ele) {
+    ele.setAttribute("checked", "checked");
+}
+
+function controlBtn(slideNumber, btnType) {
+    const questionNumber = document.getElementsByName("question" + slideNumber.toString());
+    let checkCount = 0;
+
+    for (let i = 0; i < questionNumber.length; i++) {
+        if((nextBtn.style.display === "inline-block" || submitBtn.style.display === "inline-block")&& questionNumber[i].getAttribute("checked")) {
+            checkCount += 1;
+        }
+    }
+
+    if (checkCount === 0) {
+        alert("답안지를 체크해주십시오.");
+        // event.preventDefault() 사용해야 하지 않나?
+    } else {
+        if (btnType === "next") {
+            showSlide(currentSlide + 1);
+        } else if (btnType === "submit") {
+            makeResultPage();
+        }
+    }
+}
+
 function showNextSlide() {
-    showSlide(currentSlide + 1);
+    const btnType = "next";
+    controlBtn(currentSlide, btnType);
 }
 
-function showPreviousSlide(){
-    showSlide(currentSlide - 1);
-}
-
-// function showResult() {
-//     //'answer'이름의 클래스를 배열로 저장하기
-//     const answerDisplays = quizDisplay.querySelectorAll('.answer');
-//     let numCorrect = 0; //퀴즈 정답률 기록
-
-//     //답안 검증하기
-//     quizData.forEach(
-//         (currentQuestion, questionNum) => {
-//             const answerDisplay = answerDisplays[questionNum]; //answerDisplays배열을 index별로 불러오기
-//             const selector = `input[name=question${questionNum}]:checked`; //input태그의 속성값 지정하기
-//             const userAnswer = (answerDisplay.querySelector(selector) || {}).value; //input check값 저장
-
-//             if(userAnswer === currentQuestion.correct){  //user가 선택한 값과 정답 검증
-//                 numCorrect += 1;
-//             }
-//         }
-//     );
-
-//     previousBtn.style.display = 'none';
-//     submitBtn.style.display = 'none';
-    
-//     //resultDisplay DOM에 결과값 삽입하기
-//     // resultDisplay.innerHTML = `${numCorrect} out of ${quizData.length}`;
+// function showPreviousSlide(){
+//     showSlide(currentSlide - 1);
 // }
 
+function showResult() {
+    const btnType = "submit"
+    controlBtn(currentSlide, btnType);   
+}
+
+function makeResultPage() {
+    quizPage.style.display = "none";
+    quizCtrl.style.display = "none";
+    resultPage.style.display = "block";
+
+    //'answer'이름의 클래스를 배열로 저장하기
+    const answerDisplays = quizPage.querySelectorAll('.answer');
+    let numCorrect = 0; //퀴즈 정답률 기록
+
+    //답안 검증하기
+    quizData.forEach(
+        (currentQuestion, questionNum) => {
+            const answerDisplay = answerDisplays[questionNum]; //answerDisplays배열을 index별로 불러오기
+            const selector = `input[name=question${questionNum}]:checked`; //input태그의 속성값 지정하기
+            const userAnswer = (answerDisplay.querySelector(selector) || {}).value; //input check값 저장
+
+            if(userAnswer === currentQuestion.correct){  //user가 선택한 값과 정답 검증
+                numCorrect += 1;
+            }
+        }
+    );
+
+    // previousBtn.style.display = 'none';
+    submitBtn.style.display = 'none';
+    
+    //resultDisplay DOM에 결과값 삽입하기
+    resultPage.innerHTML = `${numCorrect} out of ${quizData.length}`;
+}
+
 init();
-previousBtn.addEventListener('click', showPreviousSlide);
+
+// previousBtn.addEventListener('click', showPreviousSlide);
 nextBtn.addEventListener('click', showNextSlide);
-// submitBtn.addEventListener('click',showResult);
+submitBtn.addEventListener('click',showResult);

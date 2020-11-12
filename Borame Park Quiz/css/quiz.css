@@ -25,40 +25,78 @@
 }
 
 .question {
+    font-weight: bold;
     font-size: 16px;
-    padding: 20px 0; 
-    text-align: center;
+    line-height: 1.2;
+    padding: 20px; 
     background-color: tomato;
 }
 
 .answer {
     font-size: 16px;
-    padding: 20px 0;
+    padding: 20px;
     margin: 20px 0;
-    text-align: center;
     background-color: blanchedalmond;
+}
+
+.answer input[type=radio] {
+    display: none;
+}
+
+.answer input[type=radio]:checked + .eachAnswer {
+    background: aquamarine;
+}
+
+.eachAnswer{
+    border: 1px solid gray;
+    padding: 20px;
+    cursor: pointer;
 }
 
 .quiz-ctrl {
     display: none;
 }
 
+.quiz-ctrl:after {  /* 부모 요소가 자식 요소를 반영하게*/
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.quiz-btn {
+    display: block;
+    font-size: 17px;
+    padding: 5px 10px;
+}
+
+#previous-btn {
+    float: left;
+}
+
+#next-btn {
+    float: right;
+}
+
+#submit-btn {
+    float: right;
+}
+
 @media all and (min-width: 768px) {
+    .question {
+        font-size: 17px;
+    }
+
+    .answers {
+        font-size: 17px
+    }
+}
+
+@media all and (min-width: 1024px) {
     .question {
         font-size: 18px;
     }
 
     .answers {
         font-size: 18px
-    }
-}
-
-@media all and (min-width: 1024px) {
-    .question {
-        font-size: 20px;
-    }
-
-    .answers {
-        font-size: 20px
     }
 }
