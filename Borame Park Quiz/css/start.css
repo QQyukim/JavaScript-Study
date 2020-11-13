@@ -30,7 +30,7 @@
     padding: 24px 0;
 }
 
-.quiz-description #boramae-word {
+.quiz-description .boramae-word {
     background-color: rgb(237, 214, 255);
     color: rgb(64, 24, 116);
     border: 1px solid rgb(237, 214, 255);
@@ -55,9 +55,7 @@
     border-radius: 50px;
     border: none;
     text-align: center;
-    /* background-color: #81C33E; */
     background: linear-gradient(45deg, #23bb9a, #5ebe52, #8ca72c);
-	animation: gradient 5s ease infinite;
     color: #fff;
     font-weight: bold;
     font-size: 20px;
@@ -65,7 +63,7 @@
 }
 
 .start-btn:hover {
-    background-color: rgb(52, 65, 57);
+    background: linear-gradient(45deg, #925292, #9368a7, #8976ad);
 }
 
 
