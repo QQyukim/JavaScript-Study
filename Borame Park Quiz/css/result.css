@@ -1,3 +1,33 @@
 .result-page {
     display: none;
+    text-align: center;
+}
+
+.score {
+    padding: 20px;
+}
+
+.score .scoreNum {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.result-description {
+    margin-top: 20px;
+}
+
+.result-image {
+    margin: 30px 0;
+}
+
+@media all and (min-width: 768px) {
+    .result-description {
+        font-size: 17px;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .result-description {
+        font-size: 18px;
+    }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -26,7 +27,7 @@
                     <h1 class="main-title">
                         보라매공원 퀴즈
                     </h1>
-                    <h2 class="sub-title"> 
+                    <h2 class="sub-title">
                         보라매공원에 대하여<br>
                         얼마나 많이 알고 있나요?
                     </h2>
@@ -43,7 +44,7 @@
                     맨발공원 등 휴양 시설도 구비되어 있어요.<br>
                     공원 내에는 장애인 복지관, 구민 회관 등<br>
                     11개 기관이 입주하고 있답니다.<br><br>
-    
+
                     오늘은 보라매공원 달리기 트랙에서<br>
                     걷거나 달리기를 해보면 어떨까요? 🏃🏻‍♀️<br>
                 </div>
@@ -51,11 +52,8 @@
                     <button class="start-btn" onclick="clickStartBtn();">공원 탐방 GO</button>
                 </div>
             </section>
-    
+
             <section class="quiz-page">
-                <div class="qImg">
-                    문제 이미지 들어갈 구간
-                </div>
                 <!-- <div class="question">
                     1. 보라매 공원 이름 유래
                 </div>
@@ -70,10 +68,16 @@
             <section class="quiz-ctrl">
                 <!-- <button id="previous-btn" class="quiz-btn">⬅</button> -->
                 <button id="next-btn" class="quiz-btn">➡</button>
-                <button id="submit-btn" class="quiz-btn">내 점수는?</button>
+                <button id="submit-btn" class="quiz-btn">점수보기</button>
             </section>
 
-            <section class="result-page"></section>
+            <section class="result-page">
+                <h1 class="score">
+                    <div style="font-size: 18px; margin-bottom: 15px;"><i>당신의 점수는...</i></div>
+                </h1>
+                <p class="result-description"></p>
+                <section class="result-image"></section>
+            </section>
         </section>
 
     </section>
@@ -81,6 +85,7 @@
     <script src="js/quizData.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
 
 <!-- https://webdoli.tistory.com/270?category=833233 -->
