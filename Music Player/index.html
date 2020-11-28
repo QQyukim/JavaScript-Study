@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section class="container">
+        <h1 class="header-title">
+            🎼 Music Player 🎶
+        </h1>
+
+        <section class="music-player">
+            <section class="music-info">
+                <h2 class="music-title">어쩌구</h2>
+                <div class="progress-container">
+                    <div class="progress"></div>
+                </div>
+            </section>
+
+            <audio src="music/Morning_Kiss.mp3" class="audio"></audio>
+            
+            <section class="img-container">
+                <img src="images/Morning_Kiss.jpg" alt="music-cover" class="cover">
+                <!-- ::after -->
+            </section>
+
+            <section class="navigation">
+                <button id="prev" class="action-btn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button id="play" class="action-btn action-btn-big">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="next" class="action-btn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </section>
+        </section>
+
+        <!-- TODO -->
+        <!-- <section class="music-list">
+        </section> -->
+    </section>
+</body>
+</html>
