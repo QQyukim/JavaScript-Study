@@ -81,12 +81,6 @@ function showSlide(n) {
     slides[n].classList.add('on');
     currentSlide = n;
 
-    // if (currentSlide === 0) {
-    //     previousBtn.style.display = 'none';
-    // } else {
-    //     previousBtn.style.display = 'inline-block';
-    // }
-
     if (currentSlide === slides.length - 1) {
         nextBtn.style.display = 'none';
         submitBtn.style.display = 'inline-block';
@@ -103,13 +97,13 @@ function setCheckedBtn(ele) {
 function controlBtn(slideNumber, btnType) {
     const questionNumber = document.getElementsByName("question" + slideNumber.toString());
     let checkCount = 0;
-
+    
     for (let i = 0; i < questionNumber.length; i++) {
         if ((nextBtn.style.display === "inline-block" || submitBtn.style.display === "inline-block") && questionNumber[i].getAttribute("checked")) {
             checkCount += 1;
         }
     }
-
+    
     if (checkCount === 0) {
         alert("답안지를 체크해주십시오.");
         // event.preventDefault() 사용해야 하지 않나?
@@ -122,14 +116,34 @@ function controlBtn(slideNumber, btnType) {
     }
 }
 
-function showNextSlide() {
-    const btnType = "next";
-    controlBtn(currentSlide, btnType);
+function showAnswerByColor(slideNumber) {
+    const answerDisplay = quizPage.querySelectorAll('.answer')[slideNumber];
+    
+    const userSelector = `input[name=question${slideNumber}]:checked`;
+    const userAnswerBox = answerDisplay.querySelector(userSelector).nextElementSibling;
+    const userAnswer = answerDisplay.querySelector(userSelector).value;
+    
+    const correctAnswer = quizData[slideNumber].correct;
+    const correctSelector = `input[value=${correctAnswer}]`;
+    const correnctAnswerBox = answerDisplay.querySelector(correctSelector).nextElementSibling;
+    
+    if (userAnswer === correctAnswer) { //user가 선택한 값과 정답 검증
+        userAnswerBox.style.backgroundColor  = "#bef3ff";
+        userAnswerBox.innerText += " ✅";
+    } else {
+        userAnswerBox.style.backgroundColor  = "#ffd7d7";
+        userAnswerBox.innerText += " ❌";
+        correnctAnswerBox.style.backgroundColor = "#bef3ff";
+        correnctAnswerBox.innerText += " ✅";
+    }
 }
 
-function showResult() {
-    const btnType = "submit"
-    controlBtn(currentSlide, btnType);
+function turnOverSlide(type) {
+    showAnswerByColor(currentSlide);
+    setTimeout(function() {
+        const btnType = type; 
+        controlBtn(currentSlide, btnType);
+    }, 1000);
 }
 
 function makeResultPage() {
@@ -149,15 +163,16 @@ function makeResultPage() {
         (currentQuestion, questionNum) => {
             const answerDisplay = answerDisplays[questionNum]; //answerDisplays배열을 index별로 불러오기
             const selector = `input[name=question${questionNum}]:checked`; //input태그의 속성값 지정하기
-            const userAnswer = (answerDisplay.querySelector(selector) || {}).value; //input check값 저장
+            const userAnswer = answerDisplay.querySelector(selector).value; //input check값 저장
+            const correctAnswer = currentQuestion.correct;
 
-            if (userAnswer === currentQuestion.correct) { //user가 선택한 값과 정답 검증
+            if (userAnswer === correctAnswer) { //user가 선택한 값과 정답 검증
                 numCorrect += 1;
             }
         }
     );
 
-    let scoreNum = Math.floor((numCorrect / quizData.length) * 100)
+    let scoreNum = Math.floor((numCorrect / quizData.length) * 100);
 
     //resultDisplay DOM에 결과값 삽입하기
     score.innerHTML += `<div class="scoreNum">${scoreNum}점</div>`;
@@ -182,5 +197,5 @@ function makeResultDescription(numCorrect) {
 
 init();
 
-nextBtn.addEventListener('click', showNextSlide);
-submitBtn.addEventListener('click', showResult);
+nextBtn.addEventListener('click', function() { turnOverSlide("next"); });
+submitBtn.addEventListener('click', function() { turnOverSlide("submit"); });
