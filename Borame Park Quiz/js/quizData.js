@@ -40,7 +40,7 @@ const quizData = [
         correct : 'b'
     },
     {
-        question : "보라매공원 근처 지하철역이 아닌 것은? ",
+        question : "보라매공원 근처 지하철역이 아닌 것은?",
         answers : {
             a : '신림역',
             b : '신대방역',
@@ -48,5 +48,55 @@ const quizData = [
             d : '보라매역',
         },
         correct : 'c'
+    },
+    {
+        question : "보라매공원은 포켓몬GO 게임에서 OOO 맛집으로 통한다. OOO는 어떤 포켓몬일까요?",
+        answers : {
+            a : '피카츄',
+            b : '라이츄',
+            c : '파이리',
+            d : '꼬부기',
+        },
+        correct : 'a'
+    },
+    {
+        question : "매일 운동장에서 다 같이 에어로빅을 하는 걸 볼 수 있는 시간은?",
+        answers : {
+            a : '오전 10시',
+            b : '오후 4시',
+            c : '오후 6시',
+            d : '오후 8시',
+        },
+        correct : 'c'
+    },
+    {
+        question : "보라매공원 근처에 있는 건물이 아닌 것은? ",
+        answers : {
+            a : 'SK Telecom 지사',
+            b : '농심 본사',
+            c : 'LG U+ 지사',
+            d : '롯데백화점',
+        },
+        correct : 'c'
+    },
+    {
+        question : "보라매공원 근처에 있는 커피 브랜드가 아닌 것은?",
+        answers : {
+            a : '이디야 커피 (Ediya Coffee)',
+            b : '커피 빈 (Coffee Bean)',
+            c : '스타벅스 (starbucks)',
+            d : '일리 (illy)',
+        },
+        correct : 'b'
+    },
+    {
+        question : "보라매 공원에 있는 시설이 아닌 것은?",
+        answers : {
+            a : '수영장',
+            b : '풋살장',
+            c : '강아지 놀이터',
+            d : '청소년 수련관',
+        },
+        correct : 'a'
     }
 ]
