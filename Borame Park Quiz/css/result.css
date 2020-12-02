@@ -14,6 +14,11 @@
 
 .result-description {
     margin-top: 20px;
+    line-height: 60px;
+    border-radius: 10px;
+    font-weight: 400;
+    background: #fff09e;
+    box-shadow: 0 4px #f1bd00;
 }
 
 .result-image {
