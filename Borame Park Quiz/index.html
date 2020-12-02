@@ -13,6 +13,7 @@
 
     <!-- favicon 넣기 -->
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/start.css">
     <link rel="stylesheet" href="css/quiz.css">
@@ -54,6 +55,9 @@
             </section>
 
             <section class="quiz-page">
+                <div class="progress-bar">
+                    <div class="progress-status" style="width: 10%;"></div>
+                </div>
                 <!-- <div class="question">
                     1. 보라매 공원 이름 유래
                 </div>
@@ -76,11 +80,18 @@
                     <div style="font-size: 18px; margin-bottom: 15px;"><i>당신의 점수는...</i></div>
                     <!-- innerHTML 내용 삽입 -->
                 </h1>
-                <p class="result-description"></p>
+                <div class="result-description"></div>
                 <section class="result-image"></section>
             </section>
         </section>
 
+        <footer class="author-box">
+            <div class="madeBy">@QQyukim ⓒ2020</div>
+            <div class="sns">
+                <a href="https://twitter.com/QQyukim" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                <a href="https://github.com/QQyukim" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
     </section>
 
     <script src="js/quizData.js"></script>
