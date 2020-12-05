@@ -1,6 +1,7 @@
 .result-page {
     display: none;
     text-align: center;
+    position: relative;
 }
 
 .score {
@@ -14,11 +15,28 @@
 
 .result-description {
     margin-top: 20px;
-    line-height: 60px;
+    padding: 20px 20px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 20px;
     border-radius: 10px;
     font-weight: 400;
     background: #fff09e;
     box-shadow: 0 4px #f1bd00;
+}
+
+.result-page .result-description::after {
+    content: "";
+    position: absolute;
+    top: 225px;
+    left: 185px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid #f1bd00;
 }
 
 .result-image {
