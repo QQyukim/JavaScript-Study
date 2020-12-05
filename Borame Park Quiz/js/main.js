@@ -194,14 +194,14 @@ function makeResultDescription(numCorrect) {
     const resultImage = document.querySelector(".result-image");
 
     if (numCorrect <= 3) {
-        resultDescription.innerHTML += `이번 주말에 보라매공원 나들이를<br>
-                                        한 번 가보는 건 어떨까요?`;
+        resultDescription.innerHTML += `<p>이번 주말에 보라매공원 나들이를<br>
+                                        한 번 가보는 건 어떨까요?</p>`;
         resultImage.innerHTML += `<img src="images/result-low.png" width="100%">`
     } else if (numCorrect > 3 && numCorrect <= 7) {
-        resultDescription.innerHTML += `보라매공원을 좀더 구석구석 탐방해봐요!`
+        resultDescription.innerHTML += `<p>보라매공원을 구석구석 탐방해봐요!</p>`
         resultImage.innerHTML += `<img src="images/result-middle.png" width="100%">`
     } else if (numCorrect > 7 && numCorrect <= 10) {
-        resultDescription.innerHTML += `당신은 보라매공원 토박이!`
+        resultDescription.innerHTML += `<p>당신은 보라매공원 토박이!</p>`
         resultImage.innerHTML += `<img src="images/result-high.png" width="100%">`
     }
 }
