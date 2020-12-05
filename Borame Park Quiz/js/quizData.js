@@ -50,7 +50,7 @@ const quizData = [
         correct : 'c'
     },
     {
-        question : "보라매공원은 포켓몬GO 게임에서 OOO 맛집으로 통한다. OOO는 어떤 포켓몬일까요?",
+        question : "보라매공원은 포켓몬GO 게임에서 OOO 맛집으로 통합니다. OOO는 어떤 포켓몬일까요?",
         answers : {
             a : '피카츄',
             b : '라이츄',
@@ -74,7 +74,7 @@ const quizData = [
         answers : {
             a : 'SK Telecom 지사',
             b : '농심 본사',
-            c : 'LG U+ 지사',
+            c : 'Google 지사',
             d : '롯데백화점',
         },
         correct : 'c'
@@ -90,13 +90,13 @@ const quizData = [
         correct : 'b'
     },
     {
-        question : "보라매 공원에 있는 시설이 아닌 것은?",
+        question : "보라매공원에 있는 테니스장은 회원제로 운영됩니다. 어떻게 가입할 수 있을까요??",
         answers : {
-            a : '수영장',
-            b : '풋살장',
-            c : '강아지 놀이터',
-            d : '청소년 수련관',
+            a : '인터넷 접수',
+            b : '동작구민센터에서 접수',
+            c : '테니스장에 문의',
+            d : '지인 소개',
         },
-        correct : 'a'
+        correct : 'd'
     }
 ]
