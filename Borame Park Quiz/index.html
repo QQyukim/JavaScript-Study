@@ -82,6 +82,30 @@
                 </h1>
                 <div class="result-description"></div>
                 <section class="result-image"></section>
+
+                <!-- SNS 공유 버튼 -->
+                <section class="share-to-sns" style="width: 100%; text-align: center;">
+                    <!-- 페이스북 공유 버튼 -->
+                    <a href=""
+                        onclick="window.open(url_combine_fb, '', 'scrollbars=no, width=600, height=600'); return false;">
+                        <div title="페이스북으로 공유하기" class="sharebtn-custom sprite-fb"></div>
+                    </a>
+                    <!-- 트위터 공유 버튼 -->
+                    <a href=""
+                        onclick="window.open(url_combine_tw, '', 'scrollbars=no, width=600, height=600'); return false;">
+                        <div title="트위터로 공유하기" class="sharebtn-custom sprite-tw"></div>
+                    </a>
+                    <!-- 카카오 스토리 공유 버튼 -->
+                    <a href=""
+                        onclick="window.open(url_combine_ks, '', 'scrollbars=no, width=600, height=600'); return false;">
+                        <div title="카카오스토리로 공유하기" class="sharebtn-custom sprite-ks"></div>
+                    </a>
+                    <!-- 밴드 공유 버튼 -->
+                    <a href=""
+                        onclick="window.open(url_combine_band, '', 'scrollbars=no, width=584, height=635'); return false;">
+                        <div title="밴드로 공유하기" class="sharebtn-custom sprite-band"></div>
+                    </a>
+                </section>
             </section>
         </section>
 
@@ -92,13 +116,30 @@
                 <a href="https://github.com/QQyukim" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </footer>
-    </section>
-
+    </section>>
     <script src="js/quizData.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- SNS 공유용 주소 연결 용 -->
+    <script type="text/javascript" async>
+        var url_default_ks = "https://story.kakao.com/share?url=";
+        var url_default_fb = "https://www.facebook.com/sharer/sharer.php?u=";
+        var url_default_tw_txt = "https://twitter.com/intent/tweet?text=";
+        var url_default_tw_url = "&url=";
+        var url_default_band = "http://band.us/plugin/share?body=";
+        // var url_route_band = "&route=";
+        var url_this_page = location.href;
+        var title_this_page = document.title;
+        
+        var url_combine_ks = url_default_ks + url_this_page;
+        var url_combine_fb = url_default_fb + url_this_page;
+        var url_combine_tw = url_default_tw_txt + document.title + url_default_tw_url + url_this_page;
+        var url_combine_band = url_default_band + encodeURI(url_this_page) + "%0A" + encodeURI(title_this_page);
+    </script>
 </body>
 
 </html>
 
 <!-- https://webdoli.tistory.com/270?category=833233 -->
 <!-- https://dev-dain.tistory.com/22?category=816329 -->
+<!-- https://bssow.tistory.com/116 -->
