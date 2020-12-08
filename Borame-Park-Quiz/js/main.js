@@ -111,7 +111,7 @@ function controlBtn(slideNumber, btnType) {
             progressStatus.style.width = (10 * (currentSlide + 1)) + "%";
         } else if (btnType === "submit") {
             makeResultPage();
-            authorBox.style.display = "flex";
+            authorBox.style.display = "block";
         }
     }
 }
