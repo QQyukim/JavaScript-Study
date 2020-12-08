@@ -1,3 +1,5 @@
+const container = document.querySelector('.container');
+
 const startPage = document.querySelector(".start-page");
 const authorBox = document.querySelector('.author-box');
 const quizPage = document.querySelector(".quiz-page");
@@ -17,17 +19,8 @@ const nextBtn = document.querySelector('#next-btn');
 
 let currentSlide = 0;
 
-function init() {
-    startPage.style.display = "block";
-    window.addEventListener('resize', resize);
-}
-
 function resize() {
-    const container = document.querySelector('.container');
     let windowWidth = window.innerWidth;
-
-    container.style.display = "block";
-    authorBox.style.display = "flex";
 
     if (windowWidth < 768) { // mobile
         container.style.width = (600 * windowWidth) / 768 + "px";
@@ -206,7 +199,12 @@ function makeResultDescription(numCorrect) {
     }
 }
 
-init();
-
+window.onload = function() {
+    startPage.style.display = "block";
+    container.style.display = "block";
+    authorBox.style.display = "block";
+    resize();
+}
+window.addEventListener('resize', resize);
 nextBtn.addEventListener('click', function() { turnOverSlide("next"); });
 submitBtn.addEventListener('click', function() { turnOverSlide("submit"); });
