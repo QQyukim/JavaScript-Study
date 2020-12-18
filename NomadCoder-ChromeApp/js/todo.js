@@ -46,7 +46,8 @@ function deleteToDo(event) {
 
 function saveToDos() {
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
-    // local storage에는, js의 data를 저장할 수 없음. -> only String -> JSON.stringify 사용 (object -> string)
+    // local storage에는 String 형태의 데이터만 저장 가능
+    // -> JSON.stringify 사용 (object -> string)
     // js는 local stroage에 있는 모든 데이터를 string으로 저장하려고 함
 }
 
@@ -58,6 +59,7 @@ function paintToDo(text) {
             <span>${text}</span>
         </li>
     `;
+
     toDoList.innerHTML += innerToDoList;
 
     if (toDoList) {
@@ -66,22 +68,20 @@ function paintToDo(text) {
     }
 
     // ul 안에 요소 생성하는 코드 (클론 코딩)
-    /*
-    const li = document.createElement("li");
-    const delBtn = document.createElement("button");
-    const span = document.createElement("span");
-    const newId = toDos.length + 1;
+    // const li = document.createElement("li");
+    // const delBtn = document.createElement("button");
+    // const span = document.createElement("span");
+    // const newId = toDos.length + 1;
     
-    delBtn.innerText = "❌";
-    delBtn.addEventListener("click", deleteToDo);
+    // delBtn.innerText = "❌";
+    // delBtn.addEventListener("click", deleteToDo);
     
-    span.innerText = text;
+    // span.innerText = text;
     
-    li.appendChild(delBtn);
-    li.appendChild(span);
-    li.id = newId;          // ★li에 id 추가
-    toDoList.appendChild(li);
-    */
+    // li.appendChild(delBtn);
+    // li.appendChild(span);
+    // li.id = newId;          // ★li에 id 추가
+    // toDoList.appendChild(li);
 
     const toDoObj = {
         text: text,
@@ -94,8 +94,14 @@ function paintToDo(text) {
 function handleSubmit(event) {
     event.preventDefault();
     const currentValue =  toDoInput.value;
-    paintToDo(currentValue);
-    toDoInput.value = "";   // enter-submit한 뒤 작성한 것을 없애는(초기화) 기능
+
+    if (currentValue === '') {
+        alert("내용을 입력해주세요.");
+    } else{
+        paintToDo(currentValue);
+        toDoInput.value = "";
+        // enter-submit한 뒤 input 내부의 작성 내용을 없애는(초기화) 기능
+    }
 }
 
 // local storage에 있는 내용을 화면에 뿌려주는 함수
@@ -117,6 +123,7 @@ function loadToDos() {
 function init() {
     loadToDos();
     toDoForm.addEventListener("submit", handleSubmit)
+    // form 태그는 submit 액션 가능
 }
 
 init();
