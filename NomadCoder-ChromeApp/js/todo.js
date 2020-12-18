@@ -6,6 +6,7 @@ const toDoForm = document.querySelector(".js-toDoForm"),
 const TODOS_LS = "toDos";
 let toDos = [];
 // to-do-list 관리: array 형식 [{ text: 'abc', id: 1 }, { ... }]
+//toDos가 const이면 값이 바뀌지 않음 -> let 처리
 
 function deleteToDo(event) {
     // console.dir(event.target);  // parent node 찾기
@@ -24,8 +25,8 @@ function deleteToDo(event) {
     }
 
     if (elem.matches('[data-name="delete"]')) {
-        toDoList.removeChild(li);
         // ~ html 화면에서만 delete
+        toDoList.removeChild(li);
         
         // ★ filter
         const cleanToDos = toDos.filter(function(toDo) {
@@ -37,7 +38,7 @@ function deleteToDo(event) {
         // -> true인 아이템들만 가지고 새로운 array 만듦
 
         //toDos: 예전 것, cleanToDos: 새로 바뀐 것
-        //toDos가 const이면 값이 바뀌지 않음 -> let 처리
+        // cleanToDos : 삭제한 li 제외 요소들이 저장됨
         toDos = cleanToDos;
         // ↑ 먼저 값 바꿔주고, ↓ 저장
     }
@@ -59,6 +60,7 @@ function paintToDo(text) {
             <span>${text}</span>
         </li>
     `;
+    // li의 id 값은 '문자열' 타입임
 
     toDoList.innerHTML += innerToDoList;
 
