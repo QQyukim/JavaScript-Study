@@ -22,18 +22,18 @@ function saveCoords(coordsObj) {
 
 function handleGeoSuccess(position) {
     const latitude = position.coords.latitude;
-    const longtitude = position.coords.longtitude;
+    const longitude = position.coords.longitude;
     const coordsObj = {
         latitude,
-        longtitude
+        longitude
         // 객체의 key와 value 이름이 같을 때 위와 같이 쓸 수 있음
     }
     saveCoords(coordsObj);
-    getWeather(latitude, longtitude);
+    getWeather(latitude, longitude);
 }
 
 function handleGeoError(position) {
-    
+    console.log("Cannot access geo location");
 }
 
 function askForCoords() {
@@ -46,7 +46,7 @@ function loadCoords() {
         askForCoords();
     } else{
         const parsedCoords = JSON.parse(loadedCoords);
-        getWeather(parsedCoords.latitude, parsedCoords.longtitude);
+        getWeather(parsedCoords.latitude, parsedCoords.longitude);
     }
 }
 
