@@ -4,31 +4,38 @@
 <head>
     <title>Nomad Coder Chrome App</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <!-- 시계 -->
-    <div class="js-clock">
-        <p>00:00:00</p>
-    </div>
+    <section class="container">
+        <section>
+            <!-- 시계 -->
+            <h1 class="js-clock">
+                00:00:00
+            </h1>
+    
+            <!-- 날씨, 위치 -->
+            <div class="js-weather"></div>
+    
+            <!-- <form>: Enter 키 누르면 submit되는 기능 포함되어 있음 -->
+            <form class="js-form-greeting">
+                <input type="text" placeholder="What is your name?" />
+            </form>
+            <h2 class="js-greetings off"></h2>
+        </section>
+        <!-- To Do 입력창 -->
+        <section class="js-toDo">
+            <form class="js-toDoForm">
+                <input type="text" placeholder="Write a to do" />
+            </form>
+            <!-- To Do List -->
+            <ul class="js-toDoList"></ul>
+        </section>
+    </section>
 
-    <!-- <form>: Enter 키 누르면 submit되는 기능 포함되어 있음 -->
-    <form class="js-form-greeting">
-        <input type="text" placeholder="What is your name?" />
-    </form>
-    <p class="js-greetings off"></p>
-
-    <!-- To Do 입력창 -->
-    <form class="js-toDoForm">
-        <input type="text" placeholder="Write a to do" />
-    </form>
-    <!-- To Do List -->
-    <ul class="js-toDoList"></ul>
-
-    <!-- 날씨, 위치 -->
-    <span class="js-weather"></span>
-
+    <script src="js/main.js"></script>
     <script src="js/clock.js"></script>
     <script src="js/greetings.js"></script>
     <script src="js/todo.js"></script>
